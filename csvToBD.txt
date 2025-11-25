@@ -1,0 +1,8 @@
+docker exec -it mongodb_container mongoimport \
+  --db miEmpresa \
+  --collection facturas \
+  --type csv \
+  --file /data/import/data.csv \
+  --headerline \
+  --columnsHaveTypes \
+  -u admin -p password123 --authenticationDatabase admin
