@@ -1,9 +1,0 @@
-docker exec -it mongodb-services mongoimport \
-  --db miEmpresa \
-  --collection clientes \
-  --type csv \
-  --file /data/import/facturas.csv \
-  --headerline \
-  --columnsHaveTypes \
-  --fields "subject.id.string(),subject.name.string(),infoBilling.billing.number.string(),status.int32(),amount.double(),createdAt.string()" \
-  -u admin -p password123 --authenticationDatabase admin

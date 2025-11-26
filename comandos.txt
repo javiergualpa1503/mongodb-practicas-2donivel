@@ -1,0 +1,21 @@
+Importar CSV  a Base de datos
+
+docker exec -it mongodb-services mongoimport \
+  --db miEmpresa \
+  --collection clientes \
+  --type csv \
+  --file /data/import/facturas.csv \
+  --headerline \
+  --columnsHaveTypes \
+  --fields "subject.id.string(),subject.name.string(),infoBilling.billing.number.string(),status.int32(),amount.double(),createdAt.string()" \
+  -u admin -p password123 --authenticationDatabase admin
+
+
+
+Copiar Script a contenedor docker
+  sudo docker cp ./scripts/script.mongodb.js mongodb-services:/tmp/script.js
+
+
+Ejecutar script en el contenedor con mongosh
+  sudo docker exec -it mongodb-services mongosh miEmpresa /tmp/script.js  -u "admin" -p "password123" --authenticationDatabase "admin"
+  
