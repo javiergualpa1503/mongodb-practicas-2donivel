@@ -1,7 +1,7 @@
 const registros = [
-  { cedula: "0912225541", numeroFactura: "FAC-001" },
-  { cedula: "0954872136", numeroFactura: "FAC-002" },
-  { cedula: "1717218943", numeroFactura: "FAC-003" }
+  { cedula: "0912225541", numeroFactura: "FAC-005" },
+  { cedula: "0954872136", numeroFactura: "FAC-006" },
+  { cedula: "1717218943", numeroFactura: "FAC-007" }
 ];
 
 use('miEmpresa');
@@ -11,9 +11,13 @@ registros.forEach(item => {
   print(`\n🔍 Procesando cédula: ${item.cedula}`);
 
   const doc = db.clientes.findOne(
-    { "subject.id": item.cedula },
+    { "subject.id": item.cedula,
+
+      status:8
+     },
     {
-      sort: { createdAt: -1 },  } 
+      sort: { createdAt: -1 }
+     } 
   );
 
 
