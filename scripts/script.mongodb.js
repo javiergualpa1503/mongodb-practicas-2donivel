@@ -10,18 +10,17 @@ use('miEmpresa');
 
 registros.forEach(item => {
 
-  print(`\n🔍 Procesando cédula: ${item.cedula}`);
+  print(`Procesando cédula: ${item.cedula}`);
 
   const doc = db.clientes.findOne(
     { "subject.id": item.cedula },
     {
-      sort: { createdAt: -1 },            // más reciente
-      projection: { _id: 1 }              // solo necesitamos el _id
+      sort: { createdAt: -1 },    
+      projection: { _id: 1 }             
     }
   );
 
 
-  // Si no encuentra nada
   if (!doc) {
     print(`⚠️  No se encontró documento con subject.id = ${item.cedula}`);
     return;
