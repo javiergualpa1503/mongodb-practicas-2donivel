@@ -1,6 +1,3 @@
 use('miEmpresa')
 
-db.clientes.find();
-
-
-
+db.clientes.find()
